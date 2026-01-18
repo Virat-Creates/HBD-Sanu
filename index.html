@@ -1,19 +1,77 @@
-🌟        Happy Birthday.          🌟
-            Priyansha
-               🥳
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday Priyansha! 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+      color: #fff;
+    }
 
-               My 
-  Best friend  You are among the toppers
-  I met in my life who has lighten my 
-  life in every aspect. You have been 
-  always There at the time of need.
-  Words are not enough to explain 
-  You humbleness and Appreciable behavior.
-  It's not good to hear that we can't 
-  talk but still Happy to build such 
-  an amazing Bond talking Online. Once 
-  again
-       Happy 
-            Belated
-                   Birthday 
-🎉                         Bestu 💌  🎗
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 45px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    /* Confetti animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      animation: fall 3s linear infinite;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎉 Happy Birthday Priyansha! 🎂</h1>
+  <p>My Best Friend! You are among the toppers I met in my life who has lightened my life in every aspect.  
+  You have always been there at the time of need. Words are not enough to explain your humbleness and appreciable behavior.  
+  Once again, Happy Belated Birthday! 💖</p>
+</div>
+
+<script>
+  // Create falling confetti
+  for(let i=0; i<100; i++){
+    let confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+    confetti.style.background = `hsl(${Math.random()*360}, 100%, 70%)`;
+    document.body.appendChild(confetti);
+  }
+</script>
+
+</body>
+</html>
