@@ -2,7 +2,30 @@
 <html>
 <head>
   <title>Happy Birthday Priyansha! 🎉</title>
-  <style>
+  <style>body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}h1 {
+  color: white;
+  text-shadow: 0 0 10px pink, 0 0 20px hotpink;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
     body {
       margin: 0;
       height: 100vh;
@@ -73,7 +96,26 @@
     document.body.appendChild(confetti);
   }
 </script>
+<script>
+for (let i = 0; i < 150; i++) {
+  let confetti = document.createElement("div");
+  confetti.style.position = "fixed";
+  confetti.style.top = "-10px";
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.width = "8px";
+  confetti.style.height = "8px";
+  confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+  confetti.style.animation = `fall ${2 + Math.random()*3}s linear infinite`;
+  document.body.appendChild(confetti);
+}
 
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}`;
+document.head.appendChild(style);
+</script>
 </body>
 </html>
 <button id="playBtn" style="font-size:20px; padding:12px 24px; border-radius:12px;">
