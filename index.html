@@ -6,7 +6,6 @@
 <title>Happy Birthday Priyansha 💖</title>
 
 <style>
-
 /* ===== Romantic Animated Background ===== */
 body {
   margin: 0;
@@ -42,24 +41,19 @@ h1 {
   to { text-shadow: 0 0 30px #ff1493; }
 }
 
-/* ===== Typing Effect ===== */
+/* ===== Multi-line Typing Effect ===== */
 .typing {
-  font-size: 22px;
-  margin: 20px auto;
-  width: 80%;
-  border-right: 3px solid white;
-  white-space: nowrap;
+  font-size: 20px;
+  margin: 25px auto;
+  width: 85%;
+  line-height: 1.6;
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   overflow: hidden;
-  animation: typing 6s steps(60), blink 0.8s infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 80% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
+  text-align: left;
 }
 
 /* ===== Hanging Photo Gallery ===== */
@@ -139,7 +133,6 @@ button:hover {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-100vh); opacity: 0; }
 }
-
 </style>
 </head>
 
@@ -149,42 +142,56 @@ button:hover {
 
 <h1>🎉 Happy Birthday Priyansha 🎂💖</h1>
 
-<div class="typing">
-You are the most beautiful blessing in my life.  
-Thank you for always being there.  
-You make everything brighter just by existing 💕
+<!-- Multi-line Typing Effect -->
+<div class="typing" id="typedText">
+My Best Friend! You are among the toppers I met in my life who has lightened my life in every aspect.
+You have always been there at the time of need. Words are not enough to explain your humbleness and appreciable behavior.
+I would never find such an amazing friend like you and it doesn't sound wrong if I say you have brought a complete change in my life.
+Once again, Happy Belated Birthday! My Bestu 💖
 </div>
 
 <!-- Romantic Hanging Photos -->
 <div class="gallery">
   <div class="photo-frame">
-    <img src="FB_IMG_1771112082610.jpg">
+    <img src="FB_IMG_1771112082610.jpg" alt="Memory 1">
   </div>
   <div class="photo-frame">
-    <img src="FB_IMG_1771112114976.jpg">
+    <img src="FB_IMG_1771112114976.jpg" alt="Memory 2">
   </div>
   <div class="photo-frame">
-    <img src="FB_IMG_1771112186468.jpg">
+    <img src="FB_IMG_1771112186468.jpg" alt="Memory 3">
   </div>
 </div>
 
-<br>
-
+<!-- Music Button -->
 <button id="playBtn">🎵 Play Birthday Song</button>
-
 <audio id="music">
-<source src="happy-birthday-song.mp3" type="audio/mpeg">
+  <source src="happy-birthday-song.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Surprise Button -->
 <br>
-
 <button onclick="showLove()">🎁 Click for Surprise</button>
 
 </div>
 
 <script>
+// ===== Multi-line Typing Effect =====
+const textElement = document.getElementById("typedText");
+const fullText = textElement.innerText;
+textElement.innerText = "";
+let i = 0;
 
-/* Music */
+function typeWriter() {
+  if (i < fullText.length) {
+    textElement.innerHTML += fullText.charAt(i);
+    i++;
+    setTimeout(typeWriter, 30);
+  }
+}
+typeWriter();
+
+// ===== Music Button =====
 const btn = document.getElementById("playBtn");
 const music = document.getElementById("music");
 
@@ -193,12 +200,12 @@ btn.addEventListener("click", function () {
   btn.innerText = "🎶 Playing...";
 });
 
-/* Surprise */
+// ===== Surprise Button =====
 function showLove(){
   alert("You are my most precious person 💖🎂 I wish you endless happiness!");
 }
 
-/* Floating Hearts Generator */
+// ===== Floating Hearts =====
 setInterval(() => {
   const heart = document.createElement("div");
   heart.classList.add("heart");
@@ -212,7 +219,6 @@ setInterval(() => {
   }, 6000);
 
 }, 300);
-
 </script>
 
 </body>
