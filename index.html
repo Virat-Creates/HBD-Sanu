@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Priyansha 💖</title>
+<title>Happy Birthday Sanu 🎉💖</title>
 
 <style>
 /* ===== Animated Gradient Background ===== */
@@ -17,6 +17,7 @@ body {
   color: white;
   overflow-x: hidden;
   position: relative;
+  cursor: none; /* We'll show custom sparkles instead */
 }
 
 @keyframes gradientBG {
@@ -82,7 +83,7 @@ h1 {
 }
 
 .photo-frame:hover {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .photo-frame img {
@@ -130,7 +131,6 @@ button:hover {
 .heart {
   position: fixed;
   bottom: -20px;
-  color: pink;
   font-size: 20px;
   animation: floatUp 6s linear infinite;
 }
@@ -185,17 +185,28 @@ button:hover {
 .balloon {
   position: fixed;
   bottom: -100px;
-  width: 40px;
-  height: 60px;
+  width: 60px;
+  height: 80px;
   background: red;
-  border-radius: 0 0 20px 20px;
-  animation: riseBalloon 8s linear infinite;
-  pointer-events: none;
+  border-radius: 30% 30% 50% 50%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  line-height: 80px;
+  animation: riseBalloon 10s linear infinite;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
+.balloon1 { left: 20%; background: #ff69b4; animation-delay: 0s; content: "Happy"; }
+.balloon2 { left: 45%; background: #ff1493; animation-delay: 2s; content: "Birthday"; }
+.balloon3 { left: 70%; background: #ffb6c1; animation-delay: 4s; content: "Sanu"; }
+
 @keyframes riseBalloon {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-110vh) rotate(360deg); }
+  0% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-50vh) rotate(5deg); }
+  100% { transform: translateY(-110vh) rotate(-5deg); }
 }
 
 /* ===== Fireworks Canvas ===== */
@@ -214,7 +225,7 @@ button:hover {
 
 <div class="container">
 
-<h1>🎉 Happy Birthday Priyansha 🎂💖</h1>
+<h1>🎉 Happy Birthday Sanu 🎂💖</h1>
 
 <div class="typing" id="typedText">
 My Best Friend! You are among the toppers I met in my life who has lightened my life in every aspect.
@@ -257,6 +268,11 @@ Once again, Happy Belated Birthday! My Bestu 💖
 <!-- Fireworks Canvas -->
 <canvas id="fireworksCanvas"></canvas>
 
+<!-- Balloons -->
+<div class="balloon balloon1">Happy</div>
+<div class="balloon balloon2">Birthday</div>
+<div class="balloon balloon3">Sanu</div>
+
 </div>
 
 <script>
@@ -295,7 +311,6 @@ surpriseBtn.addEventListener("click", function() {
   popup.classList.add("show");
   launchConfetti();
   launchFireworks();
-  launchBalloons();
 });
 
 // Close Popup
@@ -330,20 +345,6 @@ function launchConfetti() {
                       { transform: `translateY(100vh) rotate(${Math.random()*720}deg)` }],
                      { duration: fallDuration, easing: 'linear' });
     setTimeout(() => confetti.remove(), fallDuration);
-  }
-}
-
-// ===== Balloons =====
-function launchBalloons() {
-  for (let i=0;i<15;i++){
-    const balloon = document.createElement("div");
-    balloon.classList.add("balloon");
-    const colors = ["#ff69b4","#ff1493","#ffb6c1","#ff8080","#ffa500"];
-    balloon.style.background = colors[Math.floor(Math.random()*colors.length)];
-    balloon.style.left = Math.random()*100+"vw";
-    balloon.style.width = balloon.style.height = 30+Math.random()*30+"px";
-    document.body.appendChild(balloon);
-    setTimeout(()=>balloon.remove(), 10000);
   }
 }
 
@@ -394,6 +395,22 @@ function launchFireworks() {
     if(fireworks.length===0) clearInterval(interval);
   },30);
 }
+
+// ===== Balloon Pop =====
+document.querySelectorAll('.balloon').forEach(balloon => {
+  balloon.addEventListener('click', () => {
+    // Pop effect
+    const popConfetti = document.createElement('div');
+    popConfetti.classList.add('confetti');
+    popConfetti.style.left = balloon.offsetLeft + 'px';
+    popConfetti.style.top = balloon.offsetTop + 'px';
+    popConfetti.style.width = popConfetti.style.height = '15px';
+    popConfetti.style.backgroundColor = balloon.style.background;
+    document.body.appendChild(popConfetti);
+    setTimeout(()=>popConfetti.remove(), 1000);
+    balloon.remove();
+  });
+});
 </script>
 
 </body>
