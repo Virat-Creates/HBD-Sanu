@@ -1,90 +1,92 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Sanu 🎂</title><style>
+<title>Happy Birthday Sanu 🎂</title>
 
-/* -------- Galaxy Background -------- */
+<style>
 
 body{
 margin:0;
 font-family:'Comic Sans MS', cursive;
-background: radial-gradient(circle at bottom,#1b2735,#090a0f);
-color:white;
+background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffdde1,#ee9ca7);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
 text-align:center;
 overflow-x:hidden;
+color:white;
 }
 
-/* stars */
-
-.star{
-position:fixed;
-width:2px;
-height:2px;
-background:white;
-animation:twinkle 2s infinite alternate;
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-@keyframes twinkle{
-from{opacity:.3}
-to{opacity:1}
-}
-
-/* shooting star */
-
-.shooting-star{
-position:fixed;
-width:3px;
-height:3px;
-background:white;
-box-shadow:0 0 6px white;
-animation:shoot 4s linear infinite;
-}
-
-@keyframes shoot{
-0%{transform:translate(0,0);opacity:1}
-100%{transform:translate(-800px,400px);opacity:0}
-}
-
-/* heading */
+/* Heading */
 
 h1{
-font-size:50px;
+font-size:55px;
 margin-top:30px;
-text-shadow:0 0 20px #ff69b4;
+text-shadow:0 0 15px #ff1493;
 }
 
-/* -------- Diary Flip -------- */
+/* Diary */
 
-.book{
-width:320px;
-height:220px;
-margin:30px auto;
-perspective:1200px;
-}
-
-.page{
-width:100%;
-height:100%;
+.diary{
 background:white;
 color:#333;
+width:85%;
+max-width:700px;
+margin:auto;
+padding:25px;
+border-radius:15px;
+line-height:1.6;
+text-align:left;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+background-image:repeating-linear-gradient(
+white,
+white 28px,
+#f2f2f2 29px
+);
+border-left:6px solid #ff69b4;
+}
+
+/* Gift */
+
+.gift{
+width:120px;
+height:120px;
+background:#ff1493;
+margin:30px auto;
 border-radius:10px;
-padding:20px;
+position:relative;
+cursor:pointer;
+}
+
+.gift:before{
+content:"";
 position:absolute;
-transform-origin:left;
-transition:transform 1s;
-box-shadow:0 10px 20px rgba(0,0,0,.4);
+width:120px;
+height:20px;
+background:gold;
+top:50px;
 }
 
-.book:hover .page{
-transform:rotateY(-160deg);
+.gift:after{
+content:"🎁";
+position:absolute;
+font-size:45px;
+top:30px;
+left:38px;
 }
 
-/* -------- Cake -------- */
+/* Cake */
 
 .cake{
 margin:40px auto;
-width:140px;
+width:150px;
 height:80px;
 background:#ff69b4;
 border-radius:10px;
@@ -114,17 +116,18 @@ animation:flicker .2s infinite alternate;
 }
 
 @keyframes flicker{
-from{opacity:.6}
-to{opacity:1}
+from{opacity:.6;}
+to{opacity:1;}
 }
 
-/* buttons */
+/* Buttons */
 
 button{
+margin:15px;
 padding:12px 25px;
-margin:10px;
 border:none;
 border-radius:10px;
+font-size:16px;
 background:#ff1493;
 color:white;
 cursor:pointer;
@@ -134,7 +137,7 @@ button:hover{
 background:#ff69b4;
 }
 
-/* hearts */
+/* Hearts */
 
 .heart{
 position:fixed;
@@ -143,11 +146,11 @@ animation:float 6s linear infinite;
 }
 
 @keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-100vh)}
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
 }
 
-/* gallery */
+/* Gallery */
 
 .gallery{
 display:flex;
@@ -162,6 +165,12 @@ background:white;
 padding:10px;
 border-radius:10px;
 box-shadow:0 10px 20px rgba(0,0,0,.5);
+transform:rotate(-3deg);
+transition:.3s;
+}
+
+.photo:hover{
+transform:scale(1.1) rotate(3deg);
 }
 
 .photo img{
@@ -169,7 +178,7 @@ width:200px;
 border-radius:10px;
 }
 
-/* popup */
+/* Popup */
 
 #popup{
 position:fixed;
@@ -178,9 +187,10 @@ left:50%;
 transform:translate(-50%,-50%) scale(0);
 background:pink;
 color:white;
-padding:25px;
+padding:30px;
 border-radius:20px;
 transition:.3s;
+max-width:320px;
 }
 
 #popup.show{
@@ -194,112 +204,118 @@ left:0;
 pointer-events:none;
 }
 
-</style></head><body><h1>🎉 Happy Birthday Sanu 🎂</h1><!-- Diary --><div class="book">
-<div class="page">
-📖 Dear Diary,Today is a special day.
+</style>
+</head>
 
-Dear Sanu,
+<body>
 
-Even though we met through screens, the bond we created feels warm and meaningful.
+<h1>🎉 Happy Birthday Sanu 🎂💖</h1>
 
-You bring positivity and kindness to conversations.
+<div class="diary" id="typing"></div>
 
-I wish you happiness, success, and beautiful memories.
+<div class="gift" onclick="openGift()"></div>
 
-Happy Birthday 🎂✨
-
-</div>
-</div><!-- Cake --><div class="cake">
+<div class="cake">
 <div class="candle">
 <div class="flame" id="flame"></div>
 </div>
-</div><button onclick="startMic()">🎤 Blow Candle</button>
+</div>
+
+<button onclick="blowCandle()">🎂 Blow Candle</button>
 <button onclick="playMusic()">🎵 Play Birthday Song</button>
 <button onclick="openNote()">💌 Secret Note</button>
 
 <audio id="music">
 <source src="happy-birthday-song.mp3" type="audio/mpeg">
-</audio><!-- popup --><div id="popup">
-💌 Secret Birthday NoteDear Sanu,
+</audio>
 
-May your birthday bring happiness, success, and wonderful memories.
+<div id="popup">
 
-Stay amazing and keep smiling.
+💌 Secret Birthday Note
 
-Happy Birthday 🎂✨
+Dear Sanu,
+
+You bring kindness and happiness wherever you go.  
+Your friendship is something I truly appreciate.
+
+May your birthday be filled with joy, success, laughter, and beautiful memories.
+
+Happy Birthday once again 🎂✨
 
 <br><br>
 <button onclick="closePopup()">Close</button>
 
-</div><!-- gallery --><div class="gallery">
-<div class="photo"><img src="photo1.jpg"></div>
-<div class="photo"><img src="photo2.jpg"></div>
-<div class="photo"><img src="photo3.jpg"></div>
-</div><canvas id="fireworks"></canvas>
+</div>
+
+<div class="gallery">
+
+<div class="photo">
+<img src="photo1.jpg">
+</div>
+
+<div class="photo">
+<img src="photo2.jpg">
+</div>
+
+<div class="photo">
+<img src="photo3.jpg">
+</div>
+
+</div>
+
+<canvas id="fireworks"></canvas>
 
 <script>
 
-/* create stars */
+/* Typing message */
 
-for(let i=0;i<120;i++){
-let s=document.createElement("div")
-s.className="star"
-s.style.left=Math.random()*100+"vw"
-s.style.top=Math.random()*100+"vh"
-document.body.appendChild(s)
+const text=`📖 Dear Diary,
+
+Today is a very special day.
+
+It is the birthday of someone amazing.
+
+Dear Sanu,
+
+Even though we met through screens, the bond we created feels warm and special.
+
+You always bring positivity and kindness.
+
+I wish you happiness, success, and beautiful memories.
+
+Happy Birthday 🎂💖
+`
+
+let i=0
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i)
+i++
+setTimeout(type,25)
+}
+}
+type()
+
+/* Gift */
+
+function openGift(){
+launchFireworks()
+launchConfetti()
 }
 
-/* shooting stars */
+/* Blow candle */
 
-setInterval(()=>{
-let star=document.createElement("div")
-star.className="shooting-star"
-star.style.left=Math.random()*100+"vw"
-star.style.top=Math.random()*50+"vh"
-document.body.appendChild(star)
-setTimeout(()=>star.remove(),4000)
-},4000)
-
-/* microphone candle blow */
-
-function startMic(){
-
-navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
-
-const audioContext=new AudioContext()
-const mic=audioContext.createMediaStreamSource(stream)
-const analyser=audioContext.createAnalyser()
-
-mic.connect(analyser)
-
-const data=new Uint8Array(analyser.frequencyBinCount)
-
-function detect(){
-
-analyser.getByteFrequencyData(data)
-
-let volume=data.reduce((a,b)=>a+b)/data.length
-
-if(volume>60){
+function blowCandle(){
 document.getElementById("flame").style.display="none"
 }
 
-requestAnimationFrame(detect)
-}
-
-detect()
-
-})
-
-}
-
-/* music */
+/* Music */
 
 function playMusic(){
 document.getElementById("music").play()
 }
 
-/* popup */
+/* Popup */
 
 function openNote(){
 document.getElementById("popup").classList.add("show")
@@ -309,17 +325,59 @@ function closePopup(){
 document.getElementById("popup").classList.remove("show")
 }
 
-/* hearts */
+/* Hearts */
 
 setInterval(()=>{
-let h=document.createElement("div")
-h.className="heart"
-h.innerHTML="💖"
-h.style.left=Math.random()*100+"vw"
-h.style.fontSize=(15+Math.random()*20)+"px"
-document.body.appendChild(h)
-setTimeout(()=>h.remove(),6000)
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="💖"
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=(15+Math.random()*20)+"px"
+document.body.appendChild(heart)
+setTimeout(()=>heart.remove(),6000)
 },300)
 
-</script></body>
+/* Fireworks */
+
+const canvas=document.getElementById("fireworks")
+const ctx=canvas.getContext("2d")
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+function launchFireworks(){
+for(let i=0;i<50;i++){
+let x=Math.random()*canvas.width
+let y=Math.random()*canvas.height/2
+ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`
+ctx.beginPath()
+ctx.arc(x,y,4,0,Math.PI*2)
+ctx.fill()
+}
+}
+
+/* Confetti */
+
+function launchConfetti(){
+for(let i=0;i<100;i++){
+let conf=document.createElement("div")
+conf.style.position="fixed"
+conf.style.width="8px"
+conf.style.height="8px"
+conf.style.background=`hsl(${Math.random()*360},100%,60%)`
+conf.style.left=Math.random()*100+"vw"
+conf.style.top="-10px"
+document.body.appendChild(conf)
+
+conf.animate([
+{transform:"translateY(0)"},
+{transform:"translateY(100vh)"}
+],{duration:3000})
+
+setTimeout(()=>conf.remove(),3000)
+}
+}
+
+</script>
+
+</body>
 </html>
